@@ -7,7 +7,7 @@ class Navbar extends Component {
 
   componentDidMount() {
         var elem = document.querySelector(".sidenav");
-        var instance = M.Sidenav.init(elem, {
+        M.Sidenav.init(elem, {
             edge: "left",
             inDuration: 250
         });
