@@ -1,13 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import Navbar from './Components/Navbar'
+import { Parallax } from 'react-materialize'
+import { Route, BrowserRouter as Router, } from 'react-router-dom'
+import Breakfast from './Components/Breakfast'
+import Dinner  from './Components/Dinner'
+import Drinks from './Components/Drinks'
 
-function App() {
-  return (
-    <div className="App">
-      We back
-    </div>
-  );
+
+class App extends Component {
+render() {
+    return (
+      <div>
+        <Router>
+          <div>
+            <Navbar />
+            <Route exact path="/" component={() =>
+              <div>
+                Home Component
+              </div>}/>
+              <Route path="/breakfast" component={Breakfast}/>
+              <Route path="/dinner" component={Dinner}/>
+              <Route path="/drinks" component={Drinks}/>
+          </div>
+        </Router>
+      </div>
+    );
+  }
 }
 
 export default App;
