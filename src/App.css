@@ -5,3 +5,13 @@ nav {
 .sidenav {
   width: 12.5rem;
 }
+
+.recipe-container {
+
+}
+
+.recipe-card {
+  padding: 0.5rem 2rem;
+}
+
+/* Recipe Card Text */

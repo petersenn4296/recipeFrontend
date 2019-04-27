@@ -1,8 +1,24 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
+import Recipe from './Recipe';
+import '../App.css'
 
 class Breakfast extends Component {
   render() {
-    return <h1>Brakfast</h1>;
+    return(
+      <div className='container-fluid recipe-container'>
+        <Recipe />
+        <Recipe />
+        <Recipe />
+        <Recipe />
+        <Recipe />
+        <Recipe />
+        <Recipe />
+        <Recipe />
+        <Recipe />
+        <Recipe />
+
+      </div>
+    )
   }
 }
 
