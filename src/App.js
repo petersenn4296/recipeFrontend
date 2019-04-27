@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Navbar from './Components/Navbar'
-import { Parallax } from 'react-materialize'
 import { Route, BrowserRouter as Router, } from 'react-router-dom'
 import Breakfast from './Components/Breakfast'
 import Dinner  from './Components/Dinner'
