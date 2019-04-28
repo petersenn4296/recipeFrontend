@@ -5,7 +5,7 @@ class AddRecipe extends Component {
   constructor() {
     super();
     this.state = {
-
+      chips: ['chip1', 'chip2'],
     }
   }
 
@@ -22,6 +22,8 @@ class AddRecipe extends Component {
     M.Modal.init(elems, options);
     var elems2 = document.querySelectorAll('select');
     M.FormSelect.init(elems2);
+    var elems3 = document.querySelectorAll('.chips');
+    M.Chips.init(elems3);
   }
 
   render() {
@@ -33,35 +35,35 @@ class AddRecipe extends Component {
               <div className='row'>
                 <div className="input-field col s12 mt-4">
                   <select>
-                    <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>
+                    <option value="1">Breakfast</option>
+                    <option value="2">Dinner</option>
+                    <option value="3">Drinks</option>
                   </select>
-                  <label>Recipe Category</label>
+                  <label>Category</label>
                 </div>
               </div>
               <div className="row">
                 <div className="input-field col s12">
                   <textarea id="textarea1" className="materialize-textarea"></textarea>
-                  <label htmlFor="textarea1">Recipe Name</label>
+                  <label htmlFor="textarea1">Name</label>
                 </div>
               </div>
               <div className="row">
                 <div className="input-field col s12">
                   <textarea id="textarea1" className="materialize-textarea"></textarea>
-                  <label htmlFor="textarea1">Recipe URL</label>
+                  <label htmlFor="textarea1">URL</label>
                 </div>
               </div>
               <div className="row">
-                <div className="input-field col s12">
-                  <textarea id="textarea1" className="materialize-textarea"></textarea>
-                  <label htmlFor="textarea1">Recipe Ingredients</label>
+                <div className="chips chips-placeholder input-field col s12">
+                  <input id="textarea1" className='input' placeholder='Ingredients'></input>
+                  {/* <label htmlFor="textarea1">Ingredients</label> */}
                 </div>
               </div>
               <div className="row">
-                <div className="input-field col s12">
-                  <textarea id="textarea1" className="materialize-textarea"></textarea>
-                  <label htmlFor="textarea1">Recipe Instructions</label>
+                <div className="chips chips-placehodler input-field col s12">
+                  <input id="textarea1" className="input" placeholder='Instructions'></input>
+                  {/* <label htmlFor="textarea1">Instructions</label> */}
                 </div>
               </div>
             </form>
