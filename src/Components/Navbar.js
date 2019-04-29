@@ -27,7 +27,7 @@ class Navbar extends Component {
           <nav>
             <div className="nav-wrapper">
               <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
-              <a data-target="modal1" className="btn-floating modal-trigger btn-large halfway-fab waves-effect waves-light deep-purple">
+              <a data-target="modal1" className="btn-floating modal-trigger btn-large halfway-fab waves-effect waves-light burgundy">
                 <i className="material-icons">add</i>
               </a>
               <ul id="nav-mobile" className="left hide-on-med-and-down">

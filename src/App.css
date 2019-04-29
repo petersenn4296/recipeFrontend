@@ -1,5 +1,5 @@
 nav {
-  background-color: orange;
+  background-color: #104547;
 }
 
 .sidenav {
@@ -7,9 +7,52 @@ nav {
 }
 
 .recipe-container {
-
+  /* background-color: #E4E3DB; */
 }
 
 .recipe-card {
   padding: 0.5rem 2rem;
+}
+
+.btn-floating.halfway-fab {
+  background-color: #AF929D
+}
+
+.card-url {
+  color: #3B252C
+}
+
+.card-content {
+  background-color: #D2D6EF;
+}
+
+.card .card-action {
+  background-color: #D2D6EF;
+}
+
+.chips, .chips.focus {
+  border-bottom: 2px solid #AF929D;
+  border-right: none;
+  color: black;
+  box-shadow: none;
+}
+
+/* form input styling */
+textarea.materialize-textarea,
+textarea.materialize-textarea:not(.broswer-default),
+textarea.materialize-textarea:focus:not([readonly]) {
+  border-bottom: 2px solid #AF929D;
+  border-right: none;
+  color: black;
+  box-shadow: none;
+}
+
+textarea.materialize-textarea:focus:not(.broswer-default)+label {
+  border-right: none;
+  color: #AF929D;
+  box-shadow: none;
+}
+
+.dropdown-content li>a, .dropdown-content li>span {
+  color: #AF929D;
 }

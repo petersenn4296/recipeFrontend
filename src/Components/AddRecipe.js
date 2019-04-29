@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import M from "materialize-css/dist/js/materialize.min.js";
+import '../App.css'
 
 class AddRecipe extends Component {
   constructor() {

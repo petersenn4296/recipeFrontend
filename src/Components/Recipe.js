@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import '../App.css'
 
 class Recipe extends Component {
   render() {
@@ -9,7 +10,7 @@ class Recipe extends Component {
             <div className="card-stacked">
               <div className="card-content">
                 <h4>{recipe.name}</h4>
-                <a href={recipe.url}>{recipe.url}</a>
+                <a className='card-url' href={recipe.url}>{recipe.url}</a>
                 {recipe.ingredients.map(ingrd => {
                   return <p key={ingrd}>{ingrd}</p>
                 })}
@@ -17,10 +18,10 @@ class Recipe extends Component {
                   return <p key={instr}>{instr}</p>
                 })}
               </div>
-              <div className="card-action">
-                {/* <a href="#">Edit Recipe? Or something else</a> */}
-                <p>uncomment later</p>
-              </div>
+              {/* <div className="card-action">
+                <a href="#">Edit Recipe? Or something else</a>
+                <p>Edit</p>
+              </div> */}
             </div>
           </div>
       </div>
