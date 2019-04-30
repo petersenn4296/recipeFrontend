@@ -56,13 +56,16 @@ class AddRecipe extends Component {
 
   async handleSubmit(e) {
     e.preventDefault();
-    console.log(this.state)
-    // try {
-    //   const response = await axios.post('http://the-recipes-backend.herokuapp.com/recipe/create', this.state);
-    //   console.log(response)
-    // } catch (error) {
-    //   console.log(error);
-    // }
+
+    try {
+      await axios.post('http://localhost:3001/recipe/create', this.state)
+      .then(() => {
+        //close modal and and do success toast
+        console.log('post complete')
+      })
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   render() {
