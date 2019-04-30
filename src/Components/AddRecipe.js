@@ -61,6 +61,7 @@ class AddRecipe extends Component {
       await axios.post('http://localhost:3001/recipe/create', this.state)
       .then(() => {
         //close modal and and do success toast
+        // this.refs.formModal.closeModal()
         console.log('post complete')
       })
     } catch (error) {
@@ -70,7 +71,7 @@ class AddRecipe extends Component {
 
   render() {
     return (
-      <div id="modal1" className="modal">
+      <div id="modal1" className="modal" ref='formModal'>
         <div className="modal-content">
           <h4 className='modal-header'>Add a new recipe</h4>
             <form className="col s12" onSubmit={this.handleSubmit}>
