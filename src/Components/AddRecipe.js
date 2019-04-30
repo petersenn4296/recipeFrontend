@@ -8,10 +8,9 @@ class AddRecipe extends Component {
     super();
     this.state = {
       ingredients: [],
-      instructions: []
+      instructions: [],
     }
     this.handleSubmit = this.handleSubmit.bind(this);
-
   }
 
   componentDidMount() {
@@ -56,14 +55,8 @@ class AddRecipe extends Component {
 
   async handleSubmit(e) {
     e.preventDefault();
-
     try {
       await axios.post('http://localhost:3001/recipe/create', this.state)
-      .then(() => {
-        //close modal and and do success toast
-        // this.refs.formModal.closeModal()
-        console.log('post complete')
-      })
     } catch (error) {
       console.log(error);
     }
@@ -71,7 +64,7 @@ class AddRecipe extends Component {
 
   render() {
     return (
-      <div id="modal1" className="modal" ref='formModal'>
+        <div id='modal1' className="modal" ref='formModal'>
         <div className="modal-content">
           <h4 className='modal-header'>Add a new recipe</h4>
             <form className="col s12" onSubmit={this.handleSubmit}>
@@ -96,13 +89,12 @@ class AddRecipe extends Component {
                 <div className="row chips chips-placehodler input-field col s12">
                   <input className="input" placeholder='Instructions'></input>
                 </div>
-                <button className="btn waves-effect waves-light" type="submit" name="action">Submit
+                <button className="btn waves-effect waves-light modal-close" data-target="#modal1" type="submit" name="action">Submit
                   <i className="material-icons right">send</i>
                 </button>
             </form>
         </div>
-
-      </div>
+      </div> 
     )
   }
 }
