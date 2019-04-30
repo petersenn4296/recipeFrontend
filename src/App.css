@@ -53,6 +53,17 @@ textarea.materialize-textarea:focus:not(.broswer-default)+label {
   box-shadow: none;
 }
 
-.dropdown-content li>a, .dropdown-content li>span {
+.dropdown-content li>a,
+.dropdown-content li>a:not(.broswer-default),
+.dropdown-content li>a:focus:not([readonly]),
+.dropdown-content li>span,
+.dropdown-content li>span:not([readonly]),
+.dropdown-content li>span:focus:not([readonly]) {
+  color: black;
+  /* border-bottom: 2px solid #AF929D; */
+}
+
+.select-wrapper input.select-dropdown:focus {
   color: #AF929D;
+  border-bottom: 1px solid #AF929D;
 }

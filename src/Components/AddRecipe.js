@@ -6,7 +6,8 @@ class AddRecipe extends Component {
   constructor() {
     super();
     this.state = {
-      chips: ['chip1', 'chip2'],
+      // ingredients: [],
+      // instructions: []
     }
   }
 
@@ -25,6 +26,19 @@ class AddRecipe extends Component {
     M.FormSelect.init(elems2);
     var elems3 = document.querySelectorAll('.chips');
     M.Chips.init(elems3);
+    // M.Chips.getInstance('.chips-initial').chipsData();
+  }
+
+  handleChange = (e) => {
+    // console.log(e.target.key)
+    this.setState({[e.target.name]: e.target.value}, () => {
+      console.log(this.state);
+    })
+  }
+
+  handleTheIStuff = e => {
+    // var data= `$('#mommy').material_chip('data')`;
+    console.log(e);
   }
 
   render() {
@@ -45,25 +59,25 @@ class AddRecipe extends Component {
               </div>
               <div className="row">
                 <div className="input-field col s12">
-                  <textarea id="textarea1" className="materialize-textarea"></textarea>
+                  <textarea name='name' onChange={this.handleChange} className="materialize-textarea"></textarea>
                   <label htmlFor="textarea1">Name</label>
                 </div>
               </div>
               <div className="row">
                 <div className="input-field col s12">
-                  <textarea id="textarea1" className="materialize-textarea"></textarea>
+                  <textarea name='url' onChange={this.handleChange} className="materialize-textarea"></textarea>
                   <label htmlFor="textarea1">URL</label>
                 </div>
               </div>
               <div className="row">
-                <div className="chips chips-placeholder input-field col s12">
-                  <input id="textarea1" className='input' placeholder='Ingredients'></input>
+                <div className="chips chips-placeholder input-field col s12" chipsData={this.handleTheIStuff}>
+                  <input className='input' name='ingredients' placeholder='Ingredients'></input>
                   {/* <label htmlFor="textarea1">Ingredients</label> */}
                 </div>
               </div>
               <div className="row">
                 <div className="chips chips-placehodler input-field col s12">
-                  <input id="textarea1" className="input" placeholder='Instructions'></input>
+                  <input className="input" placeholder='Instructions'></input>
                   {/* <label htmlFor="textarea1">Instructions</label> */}
                 </div>
               </div>
