@@ -19,7 +19,8 @@ nav {
 }
 
 .card-url {
-  color: #3B252C
+  color: #3B252C;
+  margin-bottom: 5rem;
 }
 
 .card-content {
@@ -39,6 +40,17 @@ nav {
 
 .modal-header {
   padding-bottom: 3rem;
+}
+
+.ingredients-container {
+  width: 30rem;
+  /* border: 2px solid red; */
+}
+
+.ingredients-header, .instructions-header {
+  padding: 2rem 0 1rem 0;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 /* form input styling */

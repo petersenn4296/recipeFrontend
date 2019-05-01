@@ -14,7 +14,7 @@ class Breakfast extends Component {
 
   async componentDidMount() {
     try {
-      const response = await axios.get('http://localhost:3001/recipe/category/breakfast');
+      const response = await axios.get('https://the-recipes-backend.herokuapp.com/recipe/category/breakfast');
       const recipes = response.data
       this.setState({recipes: recipes})
     } catch (error) {
