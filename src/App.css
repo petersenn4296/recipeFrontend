@@ -42,11 +42,6 @@ nav {
   padding-bottom: 3rem;
 }
 
-.ingredients-container {
-  width: 30rem;
-  /* border: 2px solid red; */
-}
-
 .ingredients-header, .instructions-header {
   padding: 2rem 0 1rem 0;
   font-size: 18px;
