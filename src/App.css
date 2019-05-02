@@ -6,15 +6,15 @@ nav {
   width: 12.5rem;
 }
 
-.recipe-container {
-  /* background-color: #E4E3DB; */
-}
-
 .recipe-card {
   padding: 0.5rem 2rem;
 }
 
 .btn-floating.halfway-fab {
+  background-color: #AF929D
+}
+
+.btn-floating {
   background-color: #AF929D
 }
 

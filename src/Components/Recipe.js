@@ -25,10 +25,6 @@ class Recipe extends Component {
                   })}
                 </div>
               </div>
-              {/* <div className="card-action">
-                <a href="#">Edit Recipe? Or something else</a>
-                <p>Edit</p>
-              </div> */}
             </div>
           </div>
       </div>

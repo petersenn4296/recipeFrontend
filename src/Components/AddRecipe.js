@@ -9,11 +9,19 @@ class AddRecipe extends Component {
     this.state = {
       ingredients: [],
       instructions: [],
+      categoriesOptions: []
     }
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentDidMount() {
+  async componentDidMount() {
+    try {
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}category/all`);
+      const categories = response.data
+      this.setState({categoriesOptions: categories})
+    } catch (error) {
+      console.log(error);
+    }
     var elems = document.querySelectorAll('.modal');
     M.Modal.init(elems, {
           inDuration: 250,
@@ -59,21 +67,26 @@ class AddRecipe extends Component {
         minLength: 1
     });
     document.getElementById("recipe-form").reset();
-    M.toast({
-      html: 'Recipe Created!',
-      displayLength: 3000,
-      inDuration: 300,
-      outDuration: 375
-    })
   }
 
   async handleSubmit(e) {
     e.preventDefault();
     try {
-      await axios.post('https://the-recipes-backend.herokuapp.com/recipe/create', this.state)
+      await axios.post(`${process.env.REACT_APP_API_URL}recipe/create`, this.state)
       this.resetModal()
+      M.toast({
+        html: 'Recipe Created!',
+        displayLength: 3000,
+        inDuration: 300,
+        outDuration: 375
+      })
     } catch (error) {
-      console.log(error);
+      M.toast({
+        html: 'Recipe Creation Failed!',
+        displayLength: 3000,
+        inDuration: 300,
+        outDuration: 375
+      })
     }
   }
 
@@ -84,11 +97,11 @@ class AddRecipe extends Component {
           <h4 className='modal-header'>Add a new recipe</h4>
             <form id='recipe-form' className="col s12" onSubmit={this.handleSubmit}>
                 <div className="row input-field col s12 mt-4">
-                  <select name='category' onChange={this.handleChange}>
+                  <select name='category_id' onChange={this.handleChange}>
                     <option></option>
-                    <option value="breakfast">Breakfast</option>
-                    <option value="dinner">Dinner</option>
-                    <option value="drinks">Drinks</option>
+                    {this.state.categoriesOptions.map(category => {
+                      return <option value={category.id}>{category.name}</option>
+                    })}
                   </select>
                   <label>Category</label>
                 </div>
