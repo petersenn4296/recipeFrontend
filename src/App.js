@@ -1,12 +1,30 @@
 import React, { Component } from 'react';
 import Navbar from './Components/Navbar'
 import { Route, BrowserRouter as Router, } from 'react-router-dom'
-import Breakfast from './Components/Breakfast'
-import Dinner  from './Components/Dinner'
-import Drinks from './Components/Drinks'
+import Category from './Components/Category'
+
+const axios = require('axios');
 
 
 class App extends Component {
+
+  constructor() {
+    super();
+    this.state = {
+      categories: []
+    }
+  }
+
+  async componentDidMount() {
+    try {
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}category/all`);
+      const categories = response.data
+      this.setState({categories: categories})
+    } catch (error) {
+      console.log('meh', error);
+    }
+  }
+
 render() {
     return (
       <div>
@@ -17,9 +35,14 @@ render() {
               <div>
                 Home Component
               </div>}/>
-              <Route path="/breakfast" component={Breakfast}/>
-              <Route path="/dinner" component={Dinner}/>
-              <Route path="/drinks" component={Drinks}/>
+              {this.state.categories.map(category => {
+              return(
+                <Route 
+                path={'/' + category.name} 
+                render={() => <Category category={category.id} />}
+                />
+              )
+            })}
           </div>
         </Router>
       </div>

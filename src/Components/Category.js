@@ -4,7 +4,7 @@ import '../App.css'
 const axios = require('axios');
 
 
-class Breakfast extends Component {
+class Category extends Component {
   constructor(){
     super();
     this.state = {
@@ -14,7 +14,7 @@ class Breakfast extends Component {
 
   async componentDidMount() {
     try {
-      const response = await axios.get(`${process.env.REACT_APP_API_URL}recipe/category/1`);
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}recipe/category/${this.props.category}`);
       const recipes = response.data
       this.setState({recipes: recipes})
     } catch (error) {
@@ -35,4 +35,4 @@ class Breakfast extends Component {
   }
 }
 
-export default Breakfast;
+export default Category;

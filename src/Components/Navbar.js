@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import M from "materialize-css/dist/js/materialize.min.js";
 import AddRecipe from './AddRecipe'
+import AddCategory from './AddCategory'
 import '../App.css';
 
 const axios = require('axios');
@@ -10,7 +11,6 @@ class Navbar extends Component {
   constructor() {
     super();
     this.state = {
-      addRecipeToggle: false,
       categories: []
     }
   }
@@ -26,7 +26,7 @@ class Navbar extends Component {
       const categories = response.data
       this.setState({categories: categories})
     } catch (error) {
-      console.log(error);
+      console.log('meh', error);
     }
   }
 
@@ -45,7 +45,7 @@ class Navbar extends Component {
                   return <li><Link to={'/' + category.name}>{category.name}</Link></li>
                 })}
               </ul>
-              <a class="btn-floating btn-small waves-effect waves-light"><i class="material-icons">add</i></a>
+              <a data-target="modal2" class="btn-floating btn-small modal-trigger waves-effect waves-light"><i class="material-icons">add</i></a>
             </div>
           </nav>
         </div>
@@ -54,10 +54,10 @@ class Navbar extends Component {
             {this.state.categories.map(category => {
               return <li><Link to={'/' + category.name}>{category.name}</Link></li>
             })}
-            <a class="btn-floating btn-small waves-effect waves-light"><i class="material-icons">add</i></a>
           </ul>
         </div>
         <AddRecipe id='modal1' />
+        <AddCategory id='modal2' />
       </div>
     );
   }
