@@ -10,7 +10,7 @@ class Recipe extends Component {
             <div className="card-stacked">
               <div className="card-content">
                 <h4>{recipe.name}</h4>
-                <a className='card-url' href={recipe.url}>{recipe.url}</a><br/>
+                <a className='card-url' href={recipe.url} target="_blank" rel="noopener noreferrer">{recipe.url}</a><br/>
                 <div className='ingredients-header'>Ingredients</div>
                 <div className='ingredients-container col s12 m6 l6'>
                   {recipe.ingredients.map(ingrd => {

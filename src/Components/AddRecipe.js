@@ -69,8 +69,7 @@ class AddRecipe extends Component {
     document.getElementById("recipe-form").reset();
   }
 
-  async handleSubmit(e) {
-    e.preventDefault();
+  async handleSubmit() {
     try {
       await axios.post(`${process.env.REACT_APP_API_URL}recipe/create`, this.state)
       this.resetModal()

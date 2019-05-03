@@ -23,13 +23,10 @@ class AddCategory extends Component {
   }
 
   handleChange = e => {
-    this.setState({[e.target.name]: e.target.value}, () => {
-        console.log(this.state)
-    })
+    this.setState({[e.target.name]: e.target.value})
   }
 
-  async handleSubmit(e) {
-    e.preventDefault();
+  async handleSubmit() {
     try {
       await axios.post(`${process.env.REACT_APP_API_URL}category/create`, this.state)
       this.resetModal()
