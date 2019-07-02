@@ -3,7 +3,7 @@ import M from "materialize-css/dist/js/materialize.min.js";
 import '../App.css'
 const axios = require('axios');
 
-class AddRecipe extends Component {
+class EditRecipe extends Component {
   constructor() {
     super();
     this.state = {
@@ -70,33 +70,36 @@ class AddRecipe extends Component {
   }
 
   async handleSubmit() {
-    try {
-      await axios.post(`${process.env.REACT_APP_API_URL}recipe/create`, this.state)
-      this.resetModal()
-      M.toast({
-        html: 'Recipe Created!',
-        displayLength: 3000,
-        inDuration: 300,
-        outDuration: 375
-      })
-    } catch (error) {
-      M.toast({
-        html: 'Recipe Creation Failed!',
-        displayLength: 3000,
-        inDuration: 300,
-        outDuration: 375
-      })
-    }
+      console.log('submit')
+    // try {
+    //   await axios.post(`${process.env.REACT_APP_API_URL}recipe/create`, this.state)
+    //   this.resetModal()
+    //   M.toast({
+    //     html: 'Recipe Created!',
+    //     displayLength: 3000,
+    //     inDuration: 300,
+    //     outDuration: 375
+    //   })
+    // } catch (error) {
+    //   M.toast({
+    //     html: 'Recipe Creation Failed!',
+    //     displayLength: 3000,
+    //     inDuration: 300,
+    //     outDuration: 375
+    //   })
+    // }
   }
 
   render() {
+      const { recipe } = this.props
+      console.log(recipe ? this.state.categoriesOptions[recipe.category_id - 1].name : '')
     return (
-        <div id='modal1' className="modal" ref='formModal'>
+        <div id='modal3' className="modal" ref='formModal'>
         <div className="modal-content">
-          <h4 className='modal-header'>Add a new recipe</h4>
+          <h4 className='modal-header'>Edit Recipe</h4>
             <form id='recipe-form' className="col s12" onSubmit={this.handleSubmit}>
                 <div className="row input-field col s12 mt-4">
-                  <select name='category_id' onChange={this.handleChange}>
+                  <select name='category_id' defaultValue={recipe ? this.state.categoriesOptions[recipe.category_id - 1].name : ''}>
                     <option></option>
                     {this.state.categoriesOptions.map(category => {
                       return <option key={category.id} value={category.id}>{category.name}</option>
@@ -105,11 +108,11 @@ class AddRecipe extends Component {
                   <label>Category</label>
                 </div>
                 <div className="row input-field col s12">
-                  <textarea name='name' onChange={this.handleChange} className="materialize-textarea"></textarea>
+                  <textarea name='name' value={recipe ? recipe.name : ''} onChange={this.handleChange} className="materialize-textarea"></textarea>
                   <label>Name</label>
                 </div>
                 <div className="row input-field col s12">
-                  <textarea name='url' onChange={this.handleChange} className="materialize-textarea"></textarea>
+                  <textarea name='url' value={recipe ? recipe.url : ''} onChange={this.handleChange} className="materialize-textarea"></textarea>
                   <label>URL</label>
                 </div>
                 <div className="row chips ingredients chips-placeholder input-field col s12">
@@ -128,4 +131,4 @@ class AddRecipe extends Component {
   }
 }
 
-export default AddRecipe;
+export default EditRecipe;

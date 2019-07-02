@@ -21,7 +21,7 @@ class App extends Component {
       const categories = response.data
       this.setState({categories: categories})
     } catch (error) {
-      console.log('meh', error);
+      console.log(error);
     }
   }
 
@@ -38,8 +38,9 @@ render() {
               {this.state.categories.map(category => {
               return(
                 <Route 
-                path={'/' + category.name} 
-                render={() => <Category category={category.id} />}
+                  key={category.id}
+                  path={'/' + category.name} 
+                  render={() => <Category category={category.id} />}
                 />
               )
             })}

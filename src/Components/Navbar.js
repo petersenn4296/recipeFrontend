@@ -26,7 +26,7 @@ class Navbar extends Component {
       const categories = response.data
       this.setState({categories: categories})
     } catch (error) {
-      console.log('meh', error);
+      console.log(error);
     }
   }
 
@@ -36,23 +36,23 @@ class Navbar extends Component {
         <div className='navbar-fixed'>
           <nav>
             <div className="nav-wrapper">
-              <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
-              <a data-target="modal1" className="btn-floating modal-trigger btn-large halfway-fab waves-effect waves-light">
+              <a href data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
+              <a href data-target="modal1" className="btn-floating modal-trigger btn-large halfway-fab waves-effect waves-light">
                 <i className="material-icons">add</i>
               </a>
               <ul id="nav-mobile" className="left hide-on-med-and-down">
                 {this.state.categories.map(category => {
-                  return <li><Link to={'/' + category.name}>{category.name}</Link></li>
+                  return <li key={category.id}><Link to={'/' + category.name}>{category.name}</Link></li>
                 })}
               </ul>
-              <a data-target="modal2" class="btn-floating btn-small modal-trigger waves-effect waves-light"><i class="material-icons">add</i></a>
+              <a href data-target="modal2" className="btn-floating btn-small modal-trigger waves-effect waves-light"><i className="material-icons">add</i></a>
             </div>
           </nav>
         </div>
         <div>
           <ul className="sidenav" id="mobile-demo">
             {this.state.categories.map(category => {
-              return <li><Link to={'/' + category.name}>{category.name}</Link></li>
+              return <li key={category.id}><Link to={'/' + category.name}>{category.name}</Link></li>
             })}
           </ul>
         </div>

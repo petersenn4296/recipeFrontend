@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import M from "materialize-css/dist/js/materialize.min.js";
+import EditRecipe from './EditRecipe'
 import '../App.css'
 
 class Recipe extends Component {
@@ -12,24 +12,8 @@ class Recipe extends Component {
     }
   }
 
-  handleEdit = () => {
-    this.setState({
-      editable: !this.state.editable,
-      editing: !this.state.editing
-    }, () => {
-      if (this.state.editing == false) {
-        console.log('time to send a put');
-        M.toast({html: 'Recipe Updated!', displayLength: 3000, inDuration: 300, outDuration: 375})
-      }
-    })
-  }
-
-  handleChange = e => {
-    this.setState({
-      [e.target.name]: e.target.value
-    }, () => {
-      console.log(this.state);
-    })
+  handleEdit = recipe => {
+    this.setState({editing: true, recipe})
   }
 
   render() {
@@ -38,12 +22,12 @@ class Recipe extends Component {
     <div className="col s12 m7 recipe-card">
       <div className="card horizontal">
         <div className="card-stacked">
-          <a onClick={this.handleEdit} style={{
-              'background-color' : this.state.editing
+          <a href onClick={this.handleEdit.bind(this, recipe)} data-target="modal3" className="btn-floating modal-trigger btn-small halfway-fab waves-effect waves-light edit modal-trigger" style={{
+              'backgroundColor' : this.state.editing
                 ? 'black'
                 : null
-            }} class="btn-floating btn-small halfway-fab waves-effect waves-light edit">
-            <i class="material-icons">edit</i>
+            }}>
+            <i className="material-icons">edit</i>
           </a>
           <div className="card-content">
 
@@ -52,25 +36,24 @@ class Recipe extends Component {
 
             <div className='ingredients-header'>Ingredients</div>
             <div className='ingredients-container col s12 m6 l6'>
-              {
-                recipe.ingredients.map(ingrd => {
-                  return <span onChange={this.handleChange} name='ingredient' key={ingrd.id} contentEditable={this.state.editable} className='ingredient chip'>{ingrd}</span>
-                })
-              }
+              {recipe.ingredients.map(ingrd => {
+                  return <span key={ingrd.id} name='ingredient' contentEditable={this.state.editable} className='ingredient chip'>{ingrd}</span>
+                })}
             </div>
 
             <div className='instructions-header'>Instructions</div>
             <div className='instructions-container col s12 m6 l6'>
-              {
-                recipe.instructions.map(instr => {
-                  return <span onChange={this.handleChange} key={instr.id} contentEditable={this.state.editable} className='instruction chip'>{instr}</span>
-                })
-              }
+            <ul>
+              {recipe.instructions.map(instr => {
+                return <li key={instr.id} contentEditable={this.state.editable} className='instruction chip'>{instr}</li>
+                })}
+            </ul>
             </div>
 
           </div>
         </div>
       </div>
+      <EditRecipe id="modal3" recipe={this.state.editing ? this.state.recipe : null} />
     </div>
     );
   }
