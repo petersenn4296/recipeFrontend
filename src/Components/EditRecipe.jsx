@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import M from "materialize-css/dist/js/materialize.min.js";
 import '../App.css'
+import { initialize } from './Inititialize'
 const axios = require('axios');
 
 class EditRecipe extends Component {
@@ -22,17 +23,8 @@ class EditRecipe extends Component {
     } catch (error) {
       console.log(error);
     }
-    var elems = document.querySelectorAll('.modal');
-    M.Modal.init(elems, {
-          inDuration: 250,
-          outDuration: 250,
-          opacity: 0.5,
-          dismissible: false,
-          startingTop: "4%",
-          endingTop: "10%"
-        });
-    var elems2 = document.querySelectorAll('select');
-    M.FormSelect.init(elems2);
+    initialize('.modal')
+    initialize('select')
     var elems4 = document.querySelectorAll('.chips');
     M.Chips.init(elems4, {
         onChipAdd: this.handleTheIStuff,
@@ -45,7 +37,7 @@ class EditRecipe extends Component {
     this.setState({[e.target.name]: e.target.value})
   }
 
-  handleTheIStuff = e => {
+  static handleTheIStuff(e) {
     const chipsArray = e[0].M_Chips.chipsData
     const chip = chipsArray[chipsArray.length - 1].tag
     let joined;
@@ -116,7 +108,7 @@ class EditRecipe extends Component {
                   <label>URL</label>
                   <textarea name='url' value={recipe ? recipe.url : ''} onChange={this.handleChange} className="materialize-textarea"></textarea>
                 </div>
-                <div className="row chips ingredients chips-placeholder input-field col s12">
+                <div className="row chips chips-initial ingredients chips-placeholder input-field col s12">
                   <input className='input' placeholder='Ingredients'></input>
                 </div>
                 <div className="row chips chips-placehodler input-field col s12">
