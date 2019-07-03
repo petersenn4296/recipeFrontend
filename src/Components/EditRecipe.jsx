@@ -90,6 +90,7 @@ class EditRecipe extends Component {
     // }
   }
 
+
   render() {
       const { recipe } = this.props
       console.log(recipe ? this.state.categoriesOptions[recipe.category_id - 1].name : '')
@@ -99,7 +100,7 @@ class EditRecipe extends Component {
           <h4 className='modal-header'>Edit Recipe</h4>
             <form id='recipe-form' className="col s12" onSubmit={this.handleSubmit}>
                 <div className="row input-field col s12 mt-4">
-                  <select name='category_id' defaultValue={recipe ? this.state.categoriesOptions[recipe.category_id - 1].name : ''}>
+                  <select name='category_id'>
                     <option></option>
                     {this.state.categoriesOptions.map(category => {
                       return <option key={category.id} value={category.id}>{category.name}</option>
@@ -107,13 +108,13 @@ class EditRecipe extends Component {
                   </select>
                   <label>Category</label>
                 </div>
-                <div className="row input-field col s12">
-                  <textarea name='name' value={recipe ? recipe.name : ''} onChange={this.handleChange} className="materialize-textarea"></textarea>
+                <div className="row col s12">
                   <label>Name</label>
+                  <textarea name='name' value={recipe ? recipe.name : ''} onChange={this.handleChange} className="materialize-textarea"></textarea>
                 </div>
-                <div className="row input-field col s12">
-                  <textarea name='url' value={recipe ? recipe.url : ''} onChange={this.handleChange} className="materialize-textarea"></textarea>
+                <div className="row col s12">
                   <label>URL</label>
+                  <textarea name='url' value={recipe ? recipe.url : ''} onChange={this.handleChange} className="materialize-textarea"></textarea>
                 </div>
                 <div className="row chips ingredients chips-placeholder input-field col s12">
                   <input className='input' placeholder='Ingredients'></input>
